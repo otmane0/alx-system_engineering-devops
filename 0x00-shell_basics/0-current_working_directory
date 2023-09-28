@@ -1,4 +1,4 @@
 #!/bin/bash
-PWD=$(pwd)
-echo "$PWD"
+pwd
+
 
