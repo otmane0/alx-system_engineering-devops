@@ -1,4 +1,6 @@
 #!/bin/bash
-pwd
+#The current working directory
+current_WD=$(pwd)
+echo "$current_WD"
 
 
