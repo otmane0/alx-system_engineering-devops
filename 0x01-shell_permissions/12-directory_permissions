@@ -1,2 +1,2 @@
 #!/bin/bash
-chmod -R a=,+rwX *
+mkdir -m 751 my_dir
