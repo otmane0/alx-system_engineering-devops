@@ -6,9 +6,9 @@ j=10
 
 while ((i <= j)); do
     if ((i == 4)); then
-        echo "Hi"
-    elif ((i == 8)); then
         echo "bad luck"
+    elif ((i == 8)); then
+        echo "good luck"
     else
         echo "Best School"
     fi
