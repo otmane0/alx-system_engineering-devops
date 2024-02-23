@@ -1,17 +1,14 @@
 #!/usr/bin/env bash
-# This script is displaying "Best School" 10 times
+# This script displays "Best School" 10 times, with special messages at positions 4 and 8.
+
 i=1
 j=10
-while ((i <= j))
-do
-    if ((i == 4))
-    then
+
+while ((i <= j)); do
+    if ((i == 4)); then
         echo "Hi"
-    
-    elif ((i == 8))
-    then
+    elif ((i == 8)); then
         echo "bad luck"
-    
     else
         echo "Best School"
     fi
