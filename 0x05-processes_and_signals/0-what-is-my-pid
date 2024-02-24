@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# This script displays messages for different loop iterations based on superstitious numbers
+
+echo $$
