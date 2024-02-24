@@ -4,4 +4,9 @@
 while true; do
     echo "To infinity and beyond"
     sleep 2
+    
+    if [ -f /tmp/stop_to_infinity_and_beyond ]; then
+        echo "Terminated"
+        exit 0
+    fi
 done
