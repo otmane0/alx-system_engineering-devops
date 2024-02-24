@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# This script 
+
+echo $$ > /tmp/to_infinity_and_beyond_pid
+
+while true; do
+    echo "To infinity and beyond"
+    sleep 2
+    
+    if [ -f /tmp/stop_to_infinity_and_beyond ]; then
+        echo "Terminated"
+        rm /tmp/stop_to_infinity_and_beyond  # Remove the flag file
+        exit 0
+    fi
+done
