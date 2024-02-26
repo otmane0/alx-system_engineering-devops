@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 #printing file
 
 filenames=()
