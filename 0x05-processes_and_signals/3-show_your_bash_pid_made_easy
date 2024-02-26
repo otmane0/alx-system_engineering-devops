@@ -1,13 +1,9 @@
 #!/usr/bin/env bash
-# This script 
-script_pid=$$
+# This script displays the PID 
 
-for pid_dir in /proc/*/; do
-    if [[ -d "$pid_dir" && "$pid_dir" =~ /proc/[0-9]+/ ]]; then
-        pid=$(basename "$pid_dir")
-        process_name=$(tr '\0' ' ' < "$pid_dir/cmdline" | grep -o "\b[b]ash\b")
-        if [ -n "$process_name" ]; then
-            echo "PID: $pid, Process Name: $process_name"
-        fi
-    fi
-done | grep -v "$script_pid bash"
+bash_pids=$(pgrep -f bash)
+
+for pid in $bash_pids; do
+    process_name=$(ps -p "$pid" -o comm=)
+    echo "$pid $process_name"
+done
