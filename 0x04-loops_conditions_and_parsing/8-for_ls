@@ -2,8 +2,8 @@
 # This script displays the content of the current directory in a list format
 
 for file in *; do
-    if [ -f "$file" ]; then  # Check if it's a regular file
-        filename=$(echo "$file" | sed 's/^[0-9]\+-//')  # Remove the prefix
+    if [ -f "$file" ]; then  
+        filename=$(echo "$file" | sed 's/^[0-9]\+-//') 
         echo "$filename"
     fi
 done
