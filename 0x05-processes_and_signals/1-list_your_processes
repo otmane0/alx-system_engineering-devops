@@ -2,5 +2,5 @@
 # This script displays messages for different loop iterations based on superstitious numbers
 
 
-ps -eo user:15,pid:10,%cpu:5,%mem:5,vsz:8,rss:8,tty:5,stat:5,start:16,time:10,command
+ps -eo user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,command
 
