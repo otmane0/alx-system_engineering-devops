@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
-#printing file
+# Printing filenames
 
 filenames=()
 
 for file in *; do
-    if [ -f "$file" ]; then  
+    if [ -f "$file" ]; then
         filename="${file#*[0-9]-}"
-        filenames+=("$filename")  
+        filenames+=("$filename")
     fi
 done
 
