@@ -1,13 +1,16 @@
-#!/usr/bin/env bash
-# This script displays the content of the current directory in a list format
+#!/bin/bash
+
+#printing file
+
+filenames=()
 
 for file in *; do
     if [ -f "$file" ]; then  
-        filename=$(echo "$file" | sed 's/^[0-9]\+-//') 
-        echo "$filename"
+        filename="${file#*[0-9]-}"
+        filenames+=("$filename")  
     fi
 done
 
-
-
-
+for filename in "${filenames[@]}"; do
+    echo "$filename"
+done
