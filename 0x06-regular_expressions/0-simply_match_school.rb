@@ -1,16 +1,12 @@
 #!/usr/bin/env ruby
 
-# Method to match the regular expression
-def match_school(string)
-    # Define the regular expression
-    inpot = /School/
-  
-    kaka = string.match(inpot)
-  
-    puts kaka ? kaka[0] : ""
-  end
-  
-  argument = ARGV[0]
-  
-  match_school(argument)
+# Get the input string from the command-line argument
+input_string = ARGV[0]
+
+regex = /School/
+
+matches = input_string.scan(regex)
+
+puts matches.join("")
+
   
