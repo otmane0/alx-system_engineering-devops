@@ -3,11 +3,11 @@
 # Method to match the regular expression
 def match_school(string)
     # Define the regular expression
-    regex = /School/
+    inpot = /School/
   
-    match_data = string.match(regex)
+    kaka = string.match(inpot)
   
-    puts match_data ? match_data[0] : ""
+    puts kaka ? kaka[0] : ""
   end
   
   argument = ARGV[0]
