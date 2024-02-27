@@ -9,4 +9,3 @@ matches = input_string.scan(regex)
 
 puts matches.join("")
 
-  
