@@ -1,0 +1,34 @@
+                       +----------------------------------+
+                       |          User's Computer         |
+                       +----------------------------------+
+                                    |
+                                    |
+                                    v
+                       +----------------------------------+
+                       |         www.foobar.com           |
+                       |         Load Balancer           |
+                       |            (HAproxy)             |
+                       +----------------------------------+
+                           |                           |
+                           |                           |
+                           |                           |
+        +------------------------------------+   +------------------------------------+
+        |       Application Server 1         |   |       Application Server 2         |
+        |         (Your Code)                |   |         (Your Code)                |
+        +------------------------------------+   +------------------------------------+
+                      |                              |
+                      |                              |
+                      v                              v
+        +------------------------------------+   +------------------------------------+
+        |           Database Server 1         |   |           Database Server 2         |
+        |             (MySQL)                 |   |             (MySQL)                 |
+        +------------------------------------+   +------------------------------------+
+
+Explanation of the Diagram:
+
+    -Load Balancer: Evenly distributes traffic for performance and availability.
+    -Application Servers: Process user requests, execute application logic, and provide redundancy.
+    -Database Servers: Primary-Replica setup for data integrity and scalability.
+    -SPOFs: Potential vulnerabilities in Load Balancer, App Servers, and Database Servers.
+    -Security: No firewall or HTTPS encryption mentioned.
+    -Monitoring: Absence of monitoring tools could lead to undetected issues.

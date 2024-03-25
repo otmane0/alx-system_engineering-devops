@@ -1,0 +1,48 @@
++-------------------+         +-----------------+         +-----------+         +-----------------+
+| User's Browser   |         | DNS Servers     |         | Internet   |         | foobar.com Server |
++-------------------+         +-----------------+         +-----------+         +-----------------+
+          |                     | (Lookup)                     |
+          |                     v                             v
+          |                     HTTP Request                   |
+          |                     (www.foobar.com)                |
+          +-----------------------+                             v
+                                 |
+                                 v  (Nginx)
++-----------------+         +-----------+         +-----------------+
+| Web Browser     |         | Web Server  |         | Application     |
+| (sends request)  |         | (Nginx)     |         | Server (Apache)  |
++-----------------+         +-----------+         +-----------------+
+                                 v                     | (Processes request)
+                                 v                     v (if needed)
++-----------------+         +-----------+         +-----------------+
+| Database        |         | Application |         | Code Base       |
++-----------------+         | Files       |         +-----------------+
+                  v                     v (Generates content)
+                  v                     v
++-----------------+         +-----------+
+| Web Server      |         | Response    |
+| (Nginx)         |         +-----------+
++-----------------+         v
+          |                 HTTP Response
+          |                 (Webpage content)
+          v
++-----------------+         +-----------------+
+| User's Browser   |         | Webpage Display  |
++-----------------+         +-----------------+
+          |
+          v (Renders webpage)
+
+Explanation of the Diagram:
+
+    -The user's web browser initiates the process by typing www.foobar.com [invalid URL removed] in the address bar.
+    -The browser sends a DNS lookup request to the DNS servers.
+    -The DNS servers translate www.foobar.com [invalid URL removed] into the server's IP address (like 8.8.8.8 in this example).
+    -The browser sends an HTTP request with the IP address and the specific webpage requested (e.g., homepage) to the foobar.com server.
+    -Nginx, the web server on the foobar.com server, receives the request.
+    -If the request is for static content (like images or HTML files), Nginx delivers it directly.
+    -For dynamic content, Nginx forwards the request to the application server (e.g., Apache).
+    -The application server processes the request and retrieves data from the database (MySQL) if needed.
+    -The application server uses the code base (written in languages like PHP or Python) to generate the webpage content.
+    -The application server sends the completed webpage back to Nginx.
+    -Nginx sends an HTTP response containing the webpage content back to the user's browser.
+    -The user's browser interprets the received data and displays the webpage (foobar.com) on the screen.
