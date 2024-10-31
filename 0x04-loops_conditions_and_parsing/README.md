@@ -1,1 +1,1 @@
-WORK WORK PLEASElsls!
+Just work, dont stay lazzy, please
