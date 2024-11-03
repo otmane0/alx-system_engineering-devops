@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
-# Infinite loop
+# This script displays its own PID
 
-while true; do
-    echo "To infinity and beyond"
-    sleep 2
-    
-    if [ -f /tmp/stop_to_infinity_and_beyond ]; then
-        echo "Terminated"
-        exit 0
-    fi
-done
+# Use the ps command with appropriate options to display process information
+
+PID=$(pgrep -f '4-to_infinity_and_beyond')
+
+if [ -n "$PID" ]; then
+    kill "$PID"
+fi
