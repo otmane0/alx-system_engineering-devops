@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-#Ps funct with all
+# Use the special variable all to get the PID of the current process
 ps all --forest
