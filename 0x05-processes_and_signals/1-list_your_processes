@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # This script displays its own PID
 
-# Use the special variable $$ to get the PID of the current process
+# Use the special variable ps to get the all of the current process
 ps all --forest
