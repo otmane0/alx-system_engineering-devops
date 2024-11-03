@@ -1,15 +1,6 @@
 #!/usr/bin/env bash
-# This script 
+# This script displays its own PID
 
-echo $$ > /tmp/to_infinity_and_beyond_pid
+# Use the ps command with appropriate options to display process information
 
-while true; do
-    echo "To infinity and beyond"
-    sleep 2
-    
-    if [ -f /tmp/stop_to_infinity_and_beyond ]; then
-        echo "Terminated"
-        rm /tmp/stop_to_infinity_and_beyond  # Remove the flag file
-        exit 0
-    fi
-done
+pkill -f 4-to_infinity_and_beyond
