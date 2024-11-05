@@ -1,5 +1,3 @@
 #!/usr/bin/env ruby
+puts ARGV[0].scan(/^hbt.{1,4}n$/).join
 
-# Get the input string from the command-line argument
-
-puts ARGV[0].scan(/hbt{2,5}n/).join
