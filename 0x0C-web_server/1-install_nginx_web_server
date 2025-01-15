@@ -1,20 +1,9 @@
 #!/usr/bin/env bash
-# Install and configure Nginx to serve a custom page
-
-# Update package lists
-sudo apt update -y
-
-# Install Nginx
-sudo apt install nginx -y
-
-# Start Nginx without using systemctl
+# Install nginx web server:
+sudo apt -y update
+sudo apt -y upgrade
+sudo apt -y install nginx
+sudo chown -R ubuntu /var/www/
+touch /var/www/html/index.html
+echo "Hello World!" > /var/www/html/index.html
 sudo service nginx start
-
-# Configure Nginx to return "Hello World!"
-echo "Hello World!" | sudo tee /var/www/html/index.html > /dev/null
-
-# Allow HTTP traffic through the firewall
-sudo ufw allow 'Nginx Full'
-
-# Restart Nginx to apply changes
-sudo service nginx restart
