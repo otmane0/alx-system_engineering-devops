@@ -1,9 +1,26 @@
 #!/usr/bin/env bash
 # Install nginx web server:
+
+# Update system packages
 sudo apt -y update
 sudo apt -y upgrade
+
+# Install nginx
 sudo apt -y install nginx
-sudo chown -R ubuntu /var/www/
-touch /var/www/html/index.html
-echo "Hello World!" > /var/www/html/index.html
-sudo service nginx start
+
+# Ensure nginx is listening on port 80
+# Edit the default configuration file
+sudo sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
+
+# Create the 'Hello World!' index page
+sudo touch /var/www/html/index.html
+echo "Hello World!" | sudo tee /var/www/html/index.html > /dev/null
+
+# Set proper permissions for the web root
+sudo chown -R www-data:www-data /var/www/
+
+# Restart nginx without using systemctl (using nginx command directly)
+sudo nginx -s reload
+
+# Check if Nginx is running and serving the page
+curl -s localhost  # Should print "Hello World!"
