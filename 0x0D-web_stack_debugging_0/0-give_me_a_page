@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 
-sudo apt -y update
-sudo apt -y upgrade
+# sudo apt -y update
+# sudo apt -y upgrade
 
-# Install apache
+# # Install apache
 
-sudo apt -y install apache2
-echo 'Hello ALX' > /var/www/html/index.html
+# sudo apt -y install apache2
+echo "Hello ALX" | sudo tee /var/www/html/index.html
 sudo service apache2 start
 sudo service apache2 status
