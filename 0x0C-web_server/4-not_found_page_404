@@ -1,31 +1,54 @@
-#!/usr/bin/env bash
-# Exit script on any error
-set -e
+#!/bin/bash
 
-# Update system and install NGINX
-sudo apt -y update
-sudo apt -y install nginx
+# Update the package list
+sudo apt-get update
 
-# Start NGINX service
-sudo service nginx start
+# Install Nginx
+sudo apt-get install -y nginx
 
-# Create a default index.html file
-echo "Hello World!" | sudo tee /var/www/html/index.html > /dev/null
+# Create the custom 404 page
+sudo bash -c 'cat <<EOF > /usr/share/nginx/html/404.html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>404 Not Found</title>
+</head>
+<body>
+    <h1>404 Not Found</h1>
+    <p>Ceci n'est pas une page</p>
+</body>
+</html>
+EOF'
 
-# Create a custom 404 page
-echo -e "Ceci n'est pas une page\n" | sudo tee /usr/share/nginx/html/404.html > /dev/null
+# Configure Nginx to use the custom 404 page
+sudo bash -c 'cat <<EOF > /etc/nginx/sites-available/default
+server {
+    listen 80 default_server;
+    listen [::]:80 default_server;
 
-# Ensure correct permissions
-sudo chmod 644 /usr/share/nginx/html/404.html
+    root /var/www/html;
 
-# Modify NGINX configuration to use the custom 404 page
-sudo sed -i "/^}$/i \
-    \n\terror_page 404 /404.html;\
-    \n\tlocation = /404.html {\
-    \n\t\troot /usr/share/nginx/html;\
-    \n\t\tinternal;\
-    \n\t}" /etc/nginx/sites-available/default
+    index index.html index.htm index.nginx-debian.html;
 
-# Test and apply configuration
+    server_name _;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    error_page 404 /404.html;
+    location = /404.html {
+        root /usr/share/nginx/html;
+        internal;
+    }
+}
+
+EOF
+
+# Test the Nginx configuration
 sudo nginx -t
-sudo service nginx restart
+
+# Restart Nginx to apply the changes
+sudo systemctl restart nginx
+
+echo "Nginx has been configured with a custom 404 page."
