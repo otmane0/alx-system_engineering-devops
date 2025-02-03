@@ -42,8 +42,7 @@ server {
         internal;
     }
 }
-
-EOF
+EOF'
 
 # Test the Nginx configuration
 sudo nginx -t
