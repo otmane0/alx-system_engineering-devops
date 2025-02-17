@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
-# 0-custom_http_response_header
-# Configures a new Ubuntu machine to include a custom Nginx response header.
 
-# Update and install Nginx
 apt-get update
 apt-get install -y nginx
 
