@@ -1,23 +1,9 @@
 #!/usr/bin/env bash
-
-# Update and upgrade the system
+# Install nginx web server:
 sudo apt -y update
 sudo apt -y upgrade
-
-# Install Nginx
 sudo apt -y install nginx
-
-# Set the correct permissions for the web server directory
-sudo chown -R $USER:$USER /var/www/
-
-# Remove the default index.html if it exists
-sudo rm -f /var/www/html/index.html
-
-# Create a new index.html file with "Hello World!" text
-echo "Hello World!" | sudo tee /var/www/html/index.html
-
-# Remove the default Nginx welcome page
-sudo rm -f /usr/share/nginx/html/index.html
-
-# Restart Nginx using the service command
-sudo service nginx restart
+sudo chown -R othmane /var/www/   # Use your local username 'othmane'
+sudo touch /var/www/html/index.html
+echo "Hello World!" | sudo tee /var/www/html/index.html   # Use sudo with tee to avoid permission issues
+sudo service nginx start
