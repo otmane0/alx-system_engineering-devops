@@ -4,8 +4,8 @@ Host *
     Compression yes
 
 # Specific host configuration of my server
-Host ubuntu@54.88.160.147
-    HostName 54.88.160.147
+Host ubuntu@100.25.110.154
+    HostName 100.25.110.154
     Port 22
     User ubuntu
     PasswordAuthentication no
