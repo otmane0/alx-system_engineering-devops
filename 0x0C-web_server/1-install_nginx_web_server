@@ -1,24 +1,6 @@
 #!/usr/bin/env bash
-# Bash Script to Install and Configure Nginx Web Server to Serve "Hello World!"
-
-# Update and upgrade system packages
-sudo apt -y update
-sudo apt -y upgrade
-
-# Install Nginx
-sudo apt -y install nginx
-
-# Create an index.html file containing "Hello World!"
-sudo tee /var/www/html/index.html > /dev/null <<EOL
-Hello World!
-EOL
-
-# Ensure the default Nginx configuration is listening on port 80
-sudo sed -i 's/listen \[::\]:80 default_server;/listen [::]:80;/g' /etc/nginx/sites-available/default
-sudo sed -i 's/listen 80 default_server;/listen 80;/g' /etc/nginx/sites-available/default
-
-# Restart Nginx without using `systemctl`
-sudo nginx -s reload
-
-# Verify the configuration file to ensure there are no errors
-sudo nginx -t
+#Install nginx web server
+apt-get -y update
+apt-get -y install nginx
+echo "Holberton School for the win!" > /var/www/html/index.nginx-debian.html
+service nginx start
