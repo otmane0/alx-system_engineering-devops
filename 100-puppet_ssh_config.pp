@@ -5,5 +5,5 @@ file { '/home/ubuntu/.ssh/config':
   owner   => 'ubuntu',
   group   => 'ubuntu',
   mode    => '0600',
-  content => "Host *\n  IdentityFile ~/.ssh/school\n  PasswordAuthentication no\n",}
-  
+  content => "Host *\n  IdentityFile ~/.ssh/school\n  PasswordAuthentication no\n",
+}
