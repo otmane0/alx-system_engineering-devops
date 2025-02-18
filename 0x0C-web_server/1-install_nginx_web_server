@@ -3,7 +3,7 @@
 sudo apt -y update
 sudo apt -y upgrade
 sudo apt -y install nginx
-sudo chown -R othmane /var/www/   # Use your local username 'othmane'
+sudo chown -R ubuntu /var/www/   # Use your local username 'othmane'
 sudo touch /var/www/html/index.html
 echo "Hello World!" | sudo tee /var/www/html/index.html   # Use sudo with tee to avoid permission issues
 sudo service nginx start
