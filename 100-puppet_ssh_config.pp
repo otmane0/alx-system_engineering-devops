@@ -4,8 +4,7 @@ file { '/home/vagrant/.ssh':
   ensure => directory,
   owner  => 'vagrant',
   group  => 'vagrant',
-  mode   => '0700',
-}
+  mode   => '0700'}
 
 # Ensure the ~/.ssh/config file exists
 file { '/home/vagrant/.ssh/config':
@@ -13,21 +12,18 @@ file { '/home/vagrant/.ssh/config':
   owner   => 'vagrant',
   group   => 'vagrant',
   mode    => '0600',
-  replace => true,
-}
+  replace => true}
 
 # Add the IdentityFile line to the SSH config
 file_line { 'Declare identity file':
   ensure => present,
   path   => '/home/vagrant/.ssh/config',
   line   => '    IdentityFile ~/.ssh/school',
-  match  => '^    IdentityFile',
-}
+  match  => '^    IdentityFile'}
 
 # Add the PasswordAuthentication line to the SSH config
 file_line { 'Turn off passwd auth':
   ensure => present,
   path   => '/home/vagrant/.ssh/config',
   line   => '    PasswordAuthentication no',
-  match  => '^    PasswordAuthentication',
-}
+  match  => '^    PasswordAuthentication'}
