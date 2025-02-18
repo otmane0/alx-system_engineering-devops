@@ -1,24 +1,12 @@
 #!/usr/bin/env bash
-set -e  # Exit the script on any error
+# Redirection:
 
-# Install Nginx
-sudo apt-get update -y
-sudo apt-get install -y nginx
-
-# Create an example index page (optional)
-echo "Welcome to the server!" | sudo tee /var/www/html/index.html > /dev/null
-
-# Configure the Nginx server to redirect /redirect_me to a new URL
-# This adds the redirection rule after the server block
-
-sudo tee -a /etc/nginx/sites-available/default > /dev/null <<EOF
-    location /redirect_me {
-        return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-    }
-EOF
-# Test the Nginx configuration
-sudo nginx -t
-
-# Reload Nginx to apply the changes
-sudo service nginx reload
-
+# Install nginx web server:
+sudo apt -y update
+sudo apt -y upgrade
+sudo apt -y install nginx
+sudo chown -R ubuntu /var/www/
+touch /var/www/html/index.html
+echo "Hello World!" > /var/www/html/index.html
+sudo sed -i "/^}$/i \ \n\tlocation /redirect_me {\n\t\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\n\t\t# Am omar but you can call me dehao\n\t}\n" /etc/nginx/sites-available/default
+sudo service nginx start
